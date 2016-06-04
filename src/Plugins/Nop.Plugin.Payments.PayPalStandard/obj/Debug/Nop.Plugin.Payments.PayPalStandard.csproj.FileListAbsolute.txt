@@ -1,0 +1,10 @@
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Views\PaymentPayPalStandard\Configure.cshtml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Views\PaymentPayPalStandard\PaymentInfo.cshtml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\web.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Description.txt
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\logo.jpg
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.dll.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.pdb
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Debug\Nop.Plugin.Payments.PayPalStandard.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Debug\Nop.Plugin.Payments.PayPalStandard.pdb

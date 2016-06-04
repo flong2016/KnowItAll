@@ -1,0 +1,10 @@
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Views\ShippingAustraliaPost\Configure.cshtml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Description.txt
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\web.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\logo.jpg
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.pdb
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csprojResolveAssemblyReference.cache
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.pdb

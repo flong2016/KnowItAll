@@ -1,0 +1,11 @@
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Views\PaymentPayPalDirect\Configure.cshtml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Views\PaymentPayPalDirect\PaymentInfo.cshtml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\web.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb

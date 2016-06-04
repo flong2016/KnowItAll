@@ -1,0 +1,9 @@
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\Nop.Tests.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\Nop.Tests.pdb
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\nunit.framework.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\Rhino.Mocks.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\nunit.framework.xml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\Rhino.Mocks.xml
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.csprojResolveAssemblyReference.cache
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.dll
+E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.pdb
