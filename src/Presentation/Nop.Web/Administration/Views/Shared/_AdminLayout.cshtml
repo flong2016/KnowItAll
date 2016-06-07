@@ -26,7 +26,7 @@
     {
         Html.AppendCssFileParts("~/Administration/Content/styles.css");
     }
-
+    Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/cultures/kendo.culture.zh-CN.min.js", kendoVersion));
     Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/kendo.web.min.js", kendoVersion));
     Html.AppendScriptParts("~/Scripts/admin.common.js");
     Html.AppendScriptParts("~/Scripts/jquery-migrate-1.2.1.min.js");
@@ -66,6 +66,9 @@
         @Html.NopHeadCustom()
         @Html.NopCssFiles(this.Url, ResourceLocation.Head)
         @Html.NopScripts(this.Url, ResourceLocation.Head)
+        <script>
+            kendo.culture("zh-CN");
+        </script>
     </head>
     <body @(supportRtl ? Html.Raw("class=\"k-rtl\"") : null)>
         <div id="ajaxBusy">
