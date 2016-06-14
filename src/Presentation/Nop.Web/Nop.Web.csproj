@@ -1006,7 +1006,6 @@
     <Content Include="Content\samples\product_Windows8.jpeg" />
     <Content Include="Content\samples\product_WomenTShirt.jpg" />
     <Content Include="Content\tagEditor\jquery.tag-editor.css" />
-    <Content Include="Content\tinymce\langs\zh_CN.js" />
     <Content Include="Content\tinymce\license.txt" />
     <Content Include="Content\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\anchor\plugin.min.js" />
@@ -1586,7 +1585,6 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.view.min.js" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.web.min.js" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.window.min.js" />
-    <Content Include="Scripts\kendo\2014.1.318\messages\kendo.messages.zh-CN.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\selectivizr.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

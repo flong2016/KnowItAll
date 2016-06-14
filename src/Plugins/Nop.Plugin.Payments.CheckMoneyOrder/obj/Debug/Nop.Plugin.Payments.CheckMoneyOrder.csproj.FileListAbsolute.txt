@@ -8,13 +8,3 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins
 E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.pdb
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\Nop.Plugin.Payments.CheckMoneyOrder.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\Nop.Plugin.Payments.CheckMoneyOrder.pdb
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Views\PaymentCheckMoneyOrder\Configure.cshtml
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Views\PaymentCheckMoneyOrder\PaymentInfo.cshtml
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\web.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Description.txt
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\logo.jpg
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.dll.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.dll
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.pdb
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\Nop.Plugin.Payments.CheckMoneyOrder.dll
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\Nop.Plugin.Payments.CheckMoneyOrder.pdb

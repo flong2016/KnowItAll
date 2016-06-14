@@ -8,13 +8,3 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins
 E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.pdb
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.pdb
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Views\PaymentPurchaseOrder\Configure.cshtml
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Views\PaymentPurchaseOrder\PaymentInfo.cshtml
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\web.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Description.txt
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\logo.jpg
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.dll.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.dll
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.pdb
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.dll
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.pdb

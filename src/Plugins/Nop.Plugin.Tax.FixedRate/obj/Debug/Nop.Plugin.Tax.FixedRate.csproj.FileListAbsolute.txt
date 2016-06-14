@@ -8,13 +8,3 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.pdb
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\Description.txt
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\web.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\Views\TaxFixedRate\Configure.cshtml
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\logo.jpg
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll.config
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll
-D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.pdb
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.dll
-D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.pdb

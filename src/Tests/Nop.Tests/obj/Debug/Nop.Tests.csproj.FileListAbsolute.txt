@@ -7,12 +7,3 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\bin\Debug\Rh
 E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.csprojResolveAssemblyReference.cache
 E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.pdb
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\Nop.Tests.dll
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\Nop.Tests.pdb
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\nunit.framework.dll
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\Rhino.Mocks.dll
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\nunit.framework.xml
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\bin\Debug\Rhino.Mocks.xml
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.csprojResolveAssemblyReference.cache
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.dll
-D:\flong2016\KnowItAll\src\Tests\Nop.Tests\obj\Debug\Nop.Tests.pdb
