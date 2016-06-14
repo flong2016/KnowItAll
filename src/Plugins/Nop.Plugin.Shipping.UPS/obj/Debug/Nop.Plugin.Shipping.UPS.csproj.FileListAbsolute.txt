@@ -8,3 +8,13 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\Views\ShippingUPS\Configure.cshtml
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\web.config
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb

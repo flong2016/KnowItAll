@@ -26,6 +26,7 @@
     {
         Html.AppendCssFileParts("~/Administration/Content/styles.css");
     }
+    Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/messages/kendo.messages.zh-CN.js", kendoVersion));
     Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/cultures/kendo.culture.zh-CN.min.js", kendoVersion));
     Html.AppendScriptParts(string.Format("~/Scripts/kendo/{0}/kendo.web.min.js", kendoVersion));
     Html.AppendScriptParts("~/Scripts/admin.common.js");
@@ -115,7 +116,7 @@
                             }
                         </div>
                         <div class="version">
-                            <span>nopCommerce @currentVersion</span>
+                            <span>@currentVersion</span>
                         </div>
                         @Html.Widget("admin_header_after", area: "Admin")
                     </div>
@@ -137,7 +138,7 @@
                 else
                 {
                     <div class="status-bar">
-                        @(EngineContext.Current.Resolve<Nop.Services.Helpers.IDateTimeHelper>().ConvertToUserTime(DateTime.Now).ToString("f"))
+                        @DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")
                     </div>
                 }
                 <div class="content">

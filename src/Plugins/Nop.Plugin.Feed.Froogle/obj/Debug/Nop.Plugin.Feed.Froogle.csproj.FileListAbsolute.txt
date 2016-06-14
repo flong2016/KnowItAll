@@ -9,3 +9,14 @@ E:\技术\nopCommerce-master\nopCommerce-master\src\Presentation\Nop.Web\Plugins
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
 E:\技术\nopCommerce-master\nopCommerce-master\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Views\FeedFroogle\Configure.cshtml
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\web.config
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll.config
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll
+D:\flong2016\KnowItAll\src\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.pdb
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
+D:\flong2016\KnowItAll\src\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb
