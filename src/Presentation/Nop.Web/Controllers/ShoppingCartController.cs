@@ -68,6 +68,10 @@ namespace Nop.Web.Controllers
         private readonly IGiftCardService _giftCardService;
         private readonly ICountryService _countryService;
         private readonly IStateProvinceService _stateProvinceService;
+        //JXzfl
+        private readonly ICityService _cityService;
+        private readonly ICountyService _countyService;
+
         private readonly IShippingService _shippingService;
         private readonly IOrderTotalCalculationService _orderTotalCalculationService;
         private readonly ICheckoutAttributeService _checkoutAttributeService;
@@ -137,7 +141,10 @@ namespace Nop.Web.Controllers
             TaxSettings taxSettings,
             CaptchaSettings captchaSettings, 
             AddressSettings addressSettings,
-            RewardPointsSettings rewardPointsSettings)
+            RewardPointsSettings rewardPointsSettings,
+            ICityService cityService,
+            ICountyService countyService
+            )
         {
             this._productService = productService;
             this._workContext = workContext;
@@ -183,6 +190,8 @@ namespace Nop.Web.Controllers
             this._captchaSettings = captchaSettings;
             this._addressSettings = addressSettings;
             this._rewardPointsSettings = rewardPointsSettings;
+            this._cityService = cityService;
+            this._countyService =countyService;
         }
 
         #endregion
@@ -439,8 +448,44 @@ namespace Nop.Web.Controllers
                     else
                         model.EstimateShipping.AvailableStates.Add(new SelectListItem { Text = _localizationService.GetResource("Address.OtherNonUS"), Value = "0" });
 
+
+                    #region JXzfl
+                    //city 
+                    int? defaultEstimateCityId = (setEstimateShippingDefaultAddress && _workContext.CurrentCustomer.ShippingAddress != null) ? _workContext.CurrentCustomer.ShippingAddress.CityId : model.EstimateShipping.CityId;
+                    var citys = defaultEstimateStateId.HasValue ? _cityService.GetCityByStateProvinceId(defaultEstimateStateId.Value).ToList() : new List<City>();
+                    if (citys.Count > 0)
+                        foreach (var s in citys)
+                            model.EstimateShipping.AvailableCitys.Add(new SelectListItem
+                            {
+                                Text = s.GetLocalized(x => x.Name),
+                                Value = s.Id.ToString(),
+                                Selected = s.Id == defaultEstimateCityId
+                            });
+                    else
+                        model.EstimateShipping.AvailableCitys.Add(new SelectListItem { Text = _localizationService.GetResource("Address.OtherNonUS"), Value = "0" });
+
                     if (setEstimateShippingDefaultAddress && _workContext.CurrentCustomer.ShippingAddress != null)
                         model.EstimateShipping.ZipPostalCode = _workContext.CurrentCustomer.ShippingAddress.ZipPostalCode;
+
+                    //county 
+                    int? defaultEstimateCountyId = (setEstimateShippingDefaultAddress && _workContext.CurrentCustomer.ShippingAddress != null) ? _workContext.CurrentCustomer.ShippingAddress.CountyId : model.EstimateShipping.CountyId;
+                    var countys = defaultEstimateCityId.HasValue ? _countyService.GetCountyByCityId(defaultEstimateCityId.Value).ToList() : new List<County>();
+                    if (countys.Count > 0)
+                        foreach (var s in countys)
+                            model.EstimateShipping.AvailableCountys.Add(new SelectListItem
+                            {
+                                Text = s.GetLocalized(x => x.Name),
+                                Value = s.Id.ToString(),
+                                Selected = s.Id == defaultEstimateCountyId
+                            });
+                    else
+                        model.EstimateShipping.AvailableCountys.Add(new SelectListItem { Text = _localizationService.GetResource("Address.OtherNonUS"), Value = "0" });
+
+                    if (setEstimateShippingDefaultAddress && _workContext.CurrentCustomer.ShippingAddress != null)
+                        model.EstimateShipping.ZipPostalCode = _workContext.CurrentCustomer.ShippingAddress.ZipPostalCode;
+
+
+                    #endregion
                 }
             }
 

@@ -53,6 +53,8 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -65,10 +67,21 @@
     <Compile Include="Mapping\Catalog\PredefinedProductAttributeValueMap.cs" />
     <Compile Include="Mapping\Common\AddressAttributeMap.cs" />
     <Compile Include="Mapping\Common\AddressAttributeValueMap.cs" />
+    <Compile Include="Mapping\Directory\CountyMap.cs" />
+    <Compile Include="Mapping\Directory\CityMap.cs" />
     <Compile Include="Mapping\Orders\ReturnRequestReason.cs" />
     <Compile Include="Mapping\Orders\ReturnRequestAction.cs" />
     <Compile Include="Mapping\Topics\TopicTemplateMap.cs" />
     <Compile Include="Mapping\Vendors\VendorNoteMap.cs" />
+    <Compile Include="Migrations\201606151620249_AddDirectory.cs" />
+    <Compile Include="Migrations\201606151620249_AddDirectory.Designer.cs">
+      <DependentUpon>201606151620249_AddDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606170951310_addAddress.cs" />
+    <Compile Include="Migrations\201606170951310_addAddress.Designer.cs">
+      <DependentUpon>201606170951310_addAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="DataReaderExtensions.cs" />
@@ -192,7 +205,14 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606151620249_AddDirectory.resx">
+      <DependentUpon>201606151620249_AddDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606170951310_addAddress.resx">
+      <DependentUpon>201606170951310_addAddress.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

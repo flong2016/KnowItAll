@@ -1,5 +1,6 @@
 
 using Nop.Core.Domain.Localization;
+using System.Collections.Generic;
 
 namespace Nop.Core.Domain.Directory
 {
@@ -8,6 +9,8 @@ namespace Nop.Core.Domain.Directory
     /// </summary>
     public partial class StateProvince : BaseEntity, ILocalizedEntity
     {
+
+        private ICollection<City> _cities;
         /// <summary>
         /// Gets or sets the country identifier
         /// </summary>
@@ -37,6 +40,12 @@ namespace Nop.Core.Domain.Directory
         /// Gets or sets the country
         /// </summary>
         public virtual Country Country { get; set; }
+
+         public virtual ICollection<City> Citys
+         {
+             get { return _cities ?? (_cities = new List<City>()); }
+             protected set { _cities = value; }
+         }
     }
 
 }

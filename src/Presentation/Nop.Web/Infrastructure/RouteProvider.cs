@@ -482,6 +482,20 @@ namespace Nop.Web.Infrastructure
                             "country/getstatesbycountryid/",
                             new { controller = "Country", action = "GetStatesByCountryId" },
                             new[] { "Nop.Web.Controllers" });
+#region JXzfl
+             //get state list by country ID  (AJAX link)
+            routes.MapRoute("GetCitysByStateProvinceId",
+                            "stateprovince/getcitysbystateprovinceid/",
+                            new { controller = "StateProvince", action = "GetCitysByStateProvinceId" },
+                            new[] { "Nop.Web.Controllers" });
+
+            routes.MapRoute("GetCountysByCityId",
+                           "city/getcountysbycityid/",
+                           new { controller = "city", action = "GetCountysByCityId" },
+                           new[] { "Nop.Web.Controllers" });
+#endregion 
+
+            
 
             //EU Cookie law accept button handler (AJAX link)
             routes.MapRoute("EuCookieLawAccept",

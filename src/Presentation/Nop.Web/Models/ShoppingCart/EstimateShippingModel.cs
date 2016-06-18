@@ -13,7 +13,12 @@ namespace Nop.Web.Models.ShoppingCart
             Warnings = new List<string>();
             
             AvailableCountries = new List<SelectListItem>();
+
             AvailableStates = new List<SelectListItem>();
+
+            AvailableCitys = new List<SelectListItem>();
+
+            AvailableCountys = new List<SelectListItem>();
         }
 
         public bool Enabled { get; set; }
@@ -21,7 +26,13 @@ namespace Nop.Web.Models.ShoppingCart
         public IList<ShippingOptionModel> ShippingOptions { get; set; }
 
         public IList<string> Warnings { get; set; }
-        
+
+        [NopResourceDisplayName("ShoppingCart.EstimateShipping.County")]
+        public int? CountyId { get; set; }
+
+        [NopResourceDisplayName("ShoppingCart.EstimateShipping.City")]
+        public int? CityId { get; set; }
+
         [NopResourceDisplayName("ShoppingCart.EstimateShipping.Country")]
         public int? CountryId { get; set; }
         [NopResourceDisplayName("ShoppingCart.EstimateShipping.StateProvince")]
@@ -31,6 +42,9 @@ namespace Nop.Web.Models.ShoppingCart
 
         public IList<SelectListItem> AvailableCountries { get; set; }
         public IList<SelectListItem> AvailableStates { get; set; }
+        public IList<SelectListItem> AvailableCitys { get; set; }
+
+        public IList<SelectListItem> AvailableCountys { get; set; }
 
 		#region Nested Classes
 

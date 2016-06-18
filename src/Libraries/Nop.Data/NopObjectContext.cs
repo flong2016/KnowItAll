@@ -23,6 +23,12 @@ namespace Nop.Data
         {
             //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
         }
+
+        public NopObjectContext()
+            : base("NopDb")
+        {
+            //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
+        }
         
         #endregion
 

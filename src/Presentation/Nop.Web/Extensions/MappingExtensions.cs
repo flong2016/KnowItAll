@@ -76,13 +76,18 @@ namespace Nop.Web.Extensions
         /// <param name="customer">Customer record which will be used to pre-populate address. Used only when "prePopulateWithCustomerFields" is "true".</param>
         /// <param name="overrideAttributesXml">When specified we do not use attributes of an address; if null, then already saved ones are used</param>
         public static void PrepareModel(this AddressModel model,
-            Address address, bool excludeProperties, 
+            Address address, bool excludeProperties,
             AddressSettings addressSettings,
             ILocalizationService localizationService = null,
             IStateProvinceService stateProvinceService = null,
             IAddressAttributeService addressAttributeService = null,
             IAddressAttributeParser addressAttributeParser = null,
             IAddressAttributeFormatter addressAttributeFormatter = null,
+            #region JXzfl
+            ICityService cityService = null,
+            ICountyService countyService = null,
+            #endregion
+
             Func<IList<Country>> loadCountries = null,
             bool prePopulateWithCustomerFields = false,
             Customer customer = null,
@@ -102,13 +107,29 @@ namespace Nop.Web.Extensions
                 model.Email = address.Email;
                 model.Company = address.Company;
                 model.CountryId = address.CountryId;
-                model.CountryName = address.Country != null 
-                    ? address.Country.GetLocalized(x => x.Name) 
+                model.CountryName = address.Country != null
+                    ? address.Country.GetLocalized(x => x.Name)
                     : null;
                 model.StateProvinceId = address.StateProvinceId;
-                model.StateProvinceName = address.StateProvince != null 
+                model.StateProvinceName = address.StateProvince != null
                     ? address.StateProvince.GetLocalized(x => x.Name)
                     : null;
+
+                #region JXzfl
+                
+                model.CityId = address.CityId;
+                model.CityName = address.CityEntity != null
+                    ? address.CityEntity.GetLocalized(x => x.Name)
+                    : null;
+
+
+                model.CountyId = address.CountyId;
+                model.CountyName = address.County != null
+                    ? address.County.GetLocalized(x => x.Name)
+                    : null;
+
+                #endregion
+
                 model.City = address.City;
                 model.Address1 = address.Address1;
                 model.Address2 = address.Address2;
@@ -160,9 +181,12 @@ namespace Nop.Web.Extensions
                         throw new ArgumentNullException("stateProvinceService");
 
                     var languageId = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Id;
+                    //var states = stateProvinceService
+                    //    .GetStateProvincesByCountryId(model.CountryId.HasValue ? model.CountryId.Value : 0, languageId)
+                    //    .ToList();
                     var states = stateProvinceService
-                        .GetStateProvincesByCountryId(model.CountryId.HasValue ? model.CountryId.Value : 0, languageId)
-                        .ToList();
+                      .GetStateProvincesByCountryId(21)//这块直接给写死成中国
+                      .ToList();
                     if (states.Count > 0)
                     {
                         model.AvailableStates.Add(new SelectListItem { Text = localizationService.GetResource("Address.SelectState"), Value = "0" });
@@ -172,7 +196,7 @@ namespace Nop.Web.Extensions
                             model.AvailableStates.Add(new SelectListItem
                             {
                                 Text = s.GetLocalized(x => x.Name),
-                                Value = s.Id.ToString(), 
+                                Value = s.Id.ToString(),
                                 Selected = (s.Id == model.StateProvinceId)
                             });
                         }
@@ -186,6 +210,64 @@ namespace Nop.Web.Extensions
                             Value = "0"
                         });
                     }
+
+                    #region JXzfl
+
+                    if (cityService == null)
+                        throw new ArgumentNullException("cityService");
+                    var firstProvince = stateProvinceService.GetStateProvincesByCountryId(21).FirstOrDefault() ??
+                                        new StateProvince();
+                    var citys =
+                        cityService.GetCityByStateProvinceId(model.StateProvinceId != null
+                            ? model.StateProvinceId.Value
+                            : firstProvince.Id).ToList();
+                    var firstCity = cityService.GetCityByStateProvinceId(firstProvince.Id).FirstOrDefault() ??
+                                     new City();
+                    if (citys.Count > 0)
+                    {
+                        foreach (var c in citys)
+                        {
+                            model.AvailableCity.Add(new SelectListItem()
+                            {
+                                Text = c.GetLocalized(x => x.Name),
+                                Value = c.Id.ToString(),
+                                Selected = (c.Id == model.CityId)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        model.AvailableCity.Add(new SelectListItem()
+                        {
+                            Text = localizationService.GetResource("Address.OtherNonUS"),
+                            Value = "0"
+                        });
+                    }
+                    if (countyService == null)
+                        throw new ArgumentNullException("countyService");
+                    var counties = countyService.GetCountyByCityId(model.CityId.HasValue ? model.CityId.Value : firstCity.Id);
+                    if (counties.Count > 0)
+                    {
+                        foreach (var county in counties)
+                        {
+                            model.AvailableCounty.Add(new SelectListItem()
+                            {
+                                Text = county.GetLocalized(x => x.Name),
+                                Value = county.Id.ToString(),
+                                Selected = (county.Id == model.CityId)
+                            });
+                        }
+                    }
+                    else
+                    {
+                        model.AvailableCity.Add(new SelectListItem()
+                        {
+                            Text = localizationService.GetResource("Address.OtherNonUS"),
+                            Value = "0"
+                        });
+                    }
+
+                    #endregion
                 }
             }
 
@@ -217,7 +299,7 @@ namespace Nop.Web.Extensions
                 model.FormattedCustomAddressAttributes = addressAttributeFormatter.FormatAttributes(address.CustomAttributes);
             }
         }
-        private static void PrepareCustomAddressAttributes(this AddressModel model, 
+        private static void PrepareCustomAddressAttributes(this AddressModel model,
             Address address,
             IAddressAttributeService addressAttributeService,
             IAddressAttributeParser addressAttributeParser,

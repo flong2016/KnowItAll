@@ -30,11 +30,17 @@ namespace Nop.Core.Domain.Common
         /// </summary>
         public int? CountryId { get; set; }
 
+
         /// <summary>
         /// Gets or sets the state/province identifier
         /// </summary>
         public int? StateProvinceId { get; set; }
-        
+
+        //JXzfl
+        public int? CityId { get; set; }
+
+        public int? CountyId { get; set; }
+
         /// <summary>
         /// Gets or sets the city
         /// </summary>
@@ -86,6 +92,9 @@ namespace Nop.Core.Domain.Common
         public virtual StateProvince StateProvince { get; set; }
 
 
+        public virtual City CityEntity { get; set; }
+        public virtual County County { get; set; }
+
         public object Clone()
         {
             var addr = new Address
@@ -98,7 +107,11 @@ namespace Nop.Core.Domain.Common
                 CountryId = this.CountryId,
                 StateProvince = this.StateProvince,
                 StateProvinceId = this.StateProvinceId,
+                CityId = this.CityId,
+                CountyId = this.CountyId,
                 City = this.City,
+                County=this.County,
+                CityEntity=this.CityEntity,
                 Address1 = this.Address1,
                 Address2 = this.Address2,
                 ZipPostalCode = this.ZipPostalCode,

@@ -15,6 +15,9 @@ namespace Nop.Web.Models.Common
             AvailableCountries = new List<SelectListItem>();
             AvailableStates = new List<SelectListItem>();
             CustomAddressAttributes = new List<AddressAttributeModel>();
+
+            AvailableCity = new List<SelectListItem>();
+            AvailableCounty = new List<SelectListItem>();
         }
 
         [NopResourceDisplayName("Address.Fields.FirstName")]
@@ -48,6 +51,20 @@ namespace Nop.Web.Models.Common
         [AllowHtml]
         public string StateProvinceName { get; set; }
 
+
+        #region JXzfl
+ 
+        public int? CityId { get; set; }
+        [NopResourceDisplayName("Address.Fields.City")]
+        [AllowHtml]
+        public string CityName { get; set; }
+
+        public int? CountyId { get; set; }
+        [NopResourceDisplayName("Address.Fields.County")]
+        [AllowHtml]
+        public string CountyName { get; set; }
+
+        #endregion 
         public bool CityEnabled { get; set; }
         public bool CityRequired { get; set; }
         [NopResourceDisplayName("Address.Fields.City")]
@@ -86,7 +103,10 @@ namespace Nop.Web.Models.Common
 
         public IList<SelectListItem> AvailableCountries { get; set; }
         public IList<SelectListItem> AvailableStates { get; set; }
+        public IList<SelectListItem> AvailableCity { get; set; }
 
+        public IList<SelectListItem> AvailableCounty { get; set; }
+        
 
         public string FormattedCustomAddressAttributes { get; set; }
         public IList<AddressAttributeModel> CustomAddressAttributes { get; set; }
