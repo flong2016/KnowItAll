@@ -2,6 +2,8 @@ using Nop.Core.Domain.Directory;
 
 namespace Nop.Data.Mapping.Directory
 {
+
+    //JXzfl
     public partial class CityMap : NopEntityTypeConfiguration<City>
     {
         public CityMap()
