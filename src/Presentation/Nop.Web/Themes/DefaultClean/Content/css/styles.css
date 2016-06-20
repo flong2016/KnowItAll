@@ -6037,7 +6037,7 @@ pre {
 	clear: both;
 }
 .footer-block {
-	float: left;
+	/*float: left;*/
 	width: 220px;
 	margin: 0;
 }
