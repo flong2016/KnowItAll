@@ -26,7 +26,7 @@ namespace Nop.Web.Validators.Customer
             }
             
             RuleFor(x => x.FirstName).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.FirstName.Required"));
-            RuleFor(x => x.LastName).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.LastName.Required"));
+          //  RuleFor(x => x.LastName).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.LastName.Required"));
 
 
             RuleFor(x => x.Password).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Password.Required"));
@@ -102,11 +102,19 @@ namespace Nop.Web.Validators.Customer
             if (customerSettings.PhoneRequired && customerSettings.PhoneEnabled)
             {
                 RuleFor(x => x.Phone).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Phone.Required"));
+                //JXzfl
+                RuleFor(x => x.Phone).Matches(@"^1\d{10,12}$").WithMessage("电话号码格式不正确");
+                //RuleFor(x => x.Phone).Must(BeAValidPhone).WithMessage("电话号码格式不正确");
             }
             if (customerSettings.FaxRequired && customerSettings.FaxEnabled)
             {
                 RuleFor(x => x.Fax).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Fax.Required"));
             }
+        }
+
+        private bool BeAValidPhone(string phoneNumber)
+        {
+            return false;//System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^[1]+[3,5]+\d{9}");
         }
     }
 }

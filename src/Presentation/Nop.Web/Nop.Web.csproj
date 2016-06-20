@@ -1663,12 +1663,14 @@
     <Content Include="Scripts\tagEditor\jquery.tag-editor.js" />
     <Content Include="Scripts\tagEditor\jquery.tag-editor.min.js" />
     <Content Include="Themes\DefaultClean\Content\css\ie8.css" />
+    <Content Include="Themes\DefaultClean\Content\css\overwritestyles.css" />
     <Content Include="Themes\DefaultClean\Content\css\styles.css" />
     <Content Include="Themes\DefaultClean\Content\css\styles.rtl.css" />
     <Content Include="Themes\DefaultClean\Content\images\ajax-loader-small.gif" />
     <Content Include="Themes\DefaultClean\Content\images\back-button.png" />
     <Content Include="Themes\DefaultClean\Content\images\calendar-next.png" />
     <Content Include="Themes\DefaultClean\Content\images\calendar-prev.png" />
+    <Content Include="Themes\DefaultClean\Content\images\cart.gif" />
     <Content Include="Themes\DefaultClean\Content\images\close.png" />
     <Content Include="Themes\DefaultClean\Content\images\compare-button.png" />
     <Content Include="Themes\DefaultClean\Content\images\details.png" />
@@ -1694,6 +1696,7 @@
     <Content Include="Themes\DefaultClean\Content\images\remove_.png" />
     <Content Include="Themes\DefaultClean\Content\images\reply.png" />
     <Content Include="Themes\DefaultClean\Content\images\return.png" />
+    <Content Include="Themes\DefaultClean\Content\images\right-icon.gif" />
     <Content Include="Themes\DefaultClean\Content\images\rss.png" />
     <Content Include="Themes\DefaultClean\Content\images\shipping.png" />
     <Content Include="Themes\DefaultClean\Content\images\shopping-bag.png" />

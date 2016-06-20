@@ -1,0 +1,18 @@
+﻿/*JXzfl*/
+
+/* choose */
+.choose{width:260px;margin:100px auto 0 auto;border:solid 1px #ddd;padding:15px 30px 30px 30px;}
+.choosetext{height:30px;padding:20px 0;font-size:14px;}
+.choosebox{padding:0 0 35px 0;}
+.choosebox li{float:left;margin-right:10px;display:inline;}
+.choosebox li a{float:left;background:#fff;font-size:14px;border:1px solid #ccc;height:25px;line-height:5px;padding:15px 20px; display:block;}
+.choosebox li a.current{background:url(../images/right-icon.gif) no-repeat 100% 100%;border:1px solid #A10000;}
+.choosebox li input{display:none;}
+.choose .btn-img{width:160px;height:50px;overflow:hidden;background:url(../images/cart.gif) no-repeat;cursor:pointer;border:0;}
+.choose .btn-img span{display:block;font-size:14px;font-weight:800;color:#fff;font-family:"微软雅黑","宋体";padding:0 0 0 50px;line-height:50px;}
+
+.header-lower {
+	position: relative;
+	z-index: 0;
+	padding: 10px 0;
+}

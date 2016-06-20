@@ -7,7 +7,7 @@
 @using System.Globalization;
 @if (Model.Count > 0)
 {
-    <div class="attributes">
+    <div class="attributes" >
         <dl>
             @foreach (var attribute in Model)
             {
@@ -28,7 +28,7 @@
                         </div>
                     }
                 </dt>
-                <dd id="@string.Format("product_attribute_input_{0}", attribute.Id)">
+                <dd id="@string.Format("product_attribute_input_{0}", attribute.Id)" >
                     @switch (attribute.AttributeControlType)
                     {
                         case AttributeControlType.DropdownList:
@@ -48,7 +48,7 @@
                         </select>
                             }
                             break;
-                        case AttributeControlType.RadioList:
+                      @*case AttributeControlType.RadioList:
                             {
                         <ul class="option-list">
                             @foreach (var attributeValue in attribute.Values)
@@ -63,9 +63,59 @@
                             }
                         </ul>
                             }
-                            break;
-                        case AttributeControlType.Checkboxes:
-                        case AttributeControlType.ReadonlyCheckboxes:
+                     break;*@ 
+
+                        //JXzfl
+                        case AttributeControlType.RadioList:
+                            {
+
+                                <div style="min-height: 25px;" class="choosebox">
+                                    @*单选框他会有很多个选项，foreach，高手忽略这句*@
+                                    <ul class="clearfix">
+                                        @foreach (var pvaValue in attribute.Values)
+                                        {
+                                          <li>
+                                                @*把他的单选按钮给通过Display:none隐藏起来*@
+                                                <input id="@(controlId)_@(pvaValue.Id)" type="radio" name="@(controlId)" value="@pvaValue.Id" checked="@pvaValue.IsPreSelected" style="display: none" />
+                                                @*下面是给用户显示的被美容过的单选按钮，我没法往出来贴CSS，想办法完了给大家一个下载地址吧*@
+                                                <a title="@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)" href="#" class="size_radioToggle">
+                                                    <samp class="value">@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)</samp>
+
+                                                </a><b></b>
+                                        </li>
+                                        }
+                                    </ul>
+                                </div>
+   
+                            }
+                            <script type="text/javascript">
+
+                                $(function(){   
+                                    $('.choosebox li a').click(function(){
+                                        var thisToggle = $(this).is('.size_radioToggle') ? $(this) : $(this).prev();
+                                        var checkBox = thisToggle.prev();
+                                        checkBox.trigger('click');
+                                        $('.size_radioToggle').removeClass('current');
+                                        thisToggle.addClass('current');
+                                        return false;
+                                    });		
+                                });
+
+                                $(".choosebox li a").click(function(){
+                                    var text = $(this).html();
+                                    $(".choosetext span").html(text);
+                                    $("#result").html("" + getSelectedValue("dress-size"));
+                                });
+			
+                                function getSelectedValue(id){
+                                    return 
+                                    $("#" + id).find(".choosetext span.value").html();
+                                }
+                            </script>
+                            break; 
+                            
+                          case AttributeControlType.Checkboxes:
+                          case AttributeControlType.ReadonlyCheckboxes:
                             {
                         <ul class="option-list">
                             @foreach (var attributeValue in attribute.Values)

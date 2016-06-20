@@ -52,9 +52,9 @@
                 <div class="message-error">@validationSummary</div>
             }
             @Html.Partial("_ExternalAuthentication.AssociateMessage")
-            <div class="fieldset">
+            <div >
                 <div class="title">
-                    <strong>@T("Account.YourPersonalDetails")</strong>
+                    @*<strong>@T("Account.YourPersonalDetails")</strong>*@
                 </div>
                 <div class="form-fields">
                     @if (Model.GenderEnabled)
@@ -79,16 +79,18 @@
                         @Html.RequiredHint()
                         @Html.ValidationMessageFor(model => model.FirstName)
                     </div>
-                    <div class="inputs">
+                   
+                   
+                     @*<div class="inputs">
                         @Html.LabelFor(model => model.LastName, new { }, ":")
                         @Html.EditorFor(model => model.LastName)
                         @Html.RequiredHint()
                         @Html.ValidationMessageFor(model => model.LastName)
-                    </div>
+                    </div>*@
                     @if (Model.DateOfBirthEnabled)
                     {
                         <div class="inputs date-of-birth">
-                            <label>@T("Account.Fields.DateOfBirth"):</label>
+                            @*<label>@T("Account.Fields.DateOfBirth"):</label>*@
                             @Html.DatePickerDropDowns(Html.FieldNameFor(x => x.DateOfBirthDay),
                                 Html.FieldNameFor(x => x.DateOfBirthMonth),
                                 Html.FieldNameFor(x => x.DateOfBirthYear),
@@ -244,10 +246,10 @@
             }
             @if (Model.PhoneEnabled || Model.FaxEnabled)
             {
-                <div class="fieldset">
-                    <div class="title">
+                <div >
+                    @*<div class="title">
                         <strong>@T("Account.YourContactInformation")</strong>
-                    </div>
+                    </div>*@
                     <div class="form-fields">
                         @if (Model.PhoneEnabled)
                         {
@@ -260,6 +262,7 @@
                                 }
                                 @Html.ValidationMessageFor(model => model.Phone)
                             </div>
+                             
                         }
                         @if (Model.FaxEnabled)
                         {
@@ -316,10 +319,10 @@
                     </div>
                 </div>
             }
-            <div class="fieldset">
-                <div class="title">
+            <div>
+                @*<div class="title">
                     <strong>@T("Account.YourPassword")</strong>
-                </div>
+                </div>*@
                 <div class="form-fields">
                     <div class="inputs">
                         @Html.LabelFor(model => model.Password, new { }, ":")
