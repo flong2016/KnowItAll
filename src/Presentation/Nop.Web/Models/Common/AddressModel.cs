@@ -53,14 +53,16 @@ namespace Nop.Web.Models.Common
 
 
         #region JXzfl
- 
+
+        [NopResourceDisplayName("市")]
         public int? CityId { get; set; }
-        [NopResourceDisplayName("Address.Fields.City")]
+        [NopResourceDisplayName("市")]
         [AllowHtml]
         public string CityName { get; set; }
 
+         [NopResourceDisplayName("区")]
         public int? CountyId { get; set; }
-        [NopResourceDisplayName("Address.Fields.County")]
+        [NopResourceDisplayName("区")]
         [AllowHtml]
         public string CountyName { get; set; }
 

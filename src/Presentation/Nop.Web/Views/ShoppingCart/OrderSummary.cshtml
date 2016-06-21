@@ -8,7 +8,7 @@
 }
 <div class="order-summary-content">
    @Html.Widget("order_summary_content_before")
-   @Html.Partial("_OrderReviewData", Model.OrderReviewData)
+    @Html.Partial("_OrderReviewData", Model.OrderReviewData)
    @if (Model.Items.Count > 0)
    {
        if (Model.Warnings.Count > 0)
@@ -296,5 +296,6 @@
            @T("ShoppingCart.CartIsEmpty")
        </div>
    }
+    
    @Html.Widget("order_summary_content_after")
 </div>

@@ -13,26 +13,21 @@
                     {
                         var addressLine = "";
                         addressLine += address.FirstName;
-                        addressLine += " " + address.LastName;
+                        if (address.StateProvinceEnabled && !String.IsNullOrEmpty(address.StateProvinceName))
+                        {
+                            addressLine += "省:" + address.StateProvinceName;
+                        }
+                        if (!String.IsNullOrEmpty(address.CityName))
+                        {
+                            addressLine += "市:" + address.CityName;
+                        }
+                        if (!String.IsNullOrEmpty(address.CountyName))
+                        {
+                            addressLine += "区:" + address.CountyName;
+                        }
                         if (address.StreetAddressEnabled && !String.IsNullOrEmpty(address.Address1))
                         {
                             addressLine += ", " + address.Address1;
-                        }
-                        if (address.CityEnabled && !String.IsNullOrEmpty(address.City))
-                        {
-                            addressLine += ", " + address.City;
-                        }
-                        if (address.StateProvinceEnabled && !String.IsNullOrEmpty(address.StateProvinceName))
-                        {
-                            addressLine += ", " + address.StateProvinceName;
-                        }
-                        if (address.ZipPostalCodeEnabled && !String.IsNullOrEmpty(address.ZipPostalCode))
-                        {
-                            addressLine += " " + address.ZipPostalCode;
-                        }
-                        if (address.CountryEnabled && !String.IsNullOrWhiteSpace(address.CountryName))
-                        {
-                            addressLine += ", " + address.CountryName;
                         }
                         //how should we render "FormattedCustomAddressAttributes" here?
                         <option value="@(address.Id)">@(addressLine)</option>

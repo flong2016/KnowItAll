@@ -56,11 +56,22 @@ namespace Nop.Admin.Validators.Common
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty()
                 .WithMessage(localizationService.GetResource("Admin.Address.Fields.PhoneNumber.Required"))
-                .When(x => x.PhoneEnabled && x.PhoneRequired);
+                .When(x => x.PhoneEnabled && x.PhoneRequired); 
+            //JXzfl
+            RuleFor(x => x.PhoneNumber)
+             .Must(BeAValidPhone)
+             .WithMessage("电话号码格式不正确")
+             .When(x => x.PhoneEnabled && x.PhoneRequired);
+
             RuleFor(x => x.FaxNumber)
                 .NotEmpty()
                 .WithMessage(localizationService.GetResource("Admin.Address.Fields.FaxNumber.Required"))
                 .When(x => x.FaxEnabled && x.FaxRequired);
+        }
+
+        private bool BeAValidPhone(string phoneNumber)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^[1]+[3,5]+\d{9}");
         }
     }
 }

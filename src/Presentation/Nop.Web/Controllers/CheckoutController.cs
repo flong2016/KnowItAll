@@ -49,6 +49,11 @@ namespace Nop.Web.Controllers
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ICountryService _countryService;
         private readonly IStateProvinceService _stateProvinceService;
+
+        //JXzfl
+        private readonly ICityService _cityService;
+        private readonly ICountyService _countyService;
+
         private readonly IShippingService _shippingService;
         private readonly IPaymentService _paymentService;
         private readonly IPluginFinder _pluginFinder;
@@ -87,6 +92,10 @@ namespace Nop.Web.Controllers
             IGenericAttributeService genericAttributeService,
             ICountryService countryService,
             IStateProvinceService stateProvinceService,
+
+            ICityService cityService,
+            ICountyService countyService,
+
             IShippingService shippingService, 
             IPaymentService paymentService,
             IPluginFinder pluginFinder,
@@ -118,6 +127,10 @@ namespace Nop.Web.Controllers
             this._genericAttributeService = genericAttributeService;
             this._countryService = countryService;
             this._stateProvinceService = stateProvinceService;
+
+            this._cityService = cityService;
+            this._countyService = countyService;
+
             this._shippingService = shippingService;
             this._paymentService = paymentService;
             this._pluginFinder = pluginFinder;
@@ -156,6 +169,8 @@ namespace Nop.Web.Controllers
 
         [NonAction]
         protected virtual CheckoutBillingAddressModel PrepareBillingAddressModel(int? selectedCountryId = null,
+            int? selectedCityId = null,
+            int? selectedCountyId = null,
             bool prePopulateNewAddressWithCustomerFields = false, string overrideAttributesXml = "")
         {
             var model = new CheckoutBillingAddressModel();
@@ -182,12 +197,16 @@ namespace Nop.Web.Controllers
 
             //new address
             model.NewAddress.CountryId = selectedCountryId;
+            model.NewAddress.CityId = selectedCityId;
+            model.NewAddress.CountyId = selectedCountyId;
             model.NewAddress.PrepareModel(address: 
                 null,
                 excludeProperties: false,
                 addressSettings: _addressSettings,
                 localizationService: _localizationService,
                 stateProvinceService: _stateProvinceService,
+                cityService:_cityService,
+                countyService:_countyService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
                 loadCountries: () => _countryService.GetAllCountriesForBilling(_workContext.WorkingLanguage.Id),
@@ -242,6 +261,8 @@ namespace Nop.Web.Controllers
                 stateProvinceService: _stateProvinceService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
+                cityService:_cityService,
+                countyService:_countyService,
                 loadCountries: () => _countryService.GetAllCountriesForShipping(_workContext.WorkingLanguage.Id),
                 prePopulateWithCustomerFields: prePopulateNewAddressWithCustomerFields,
                 customer: _workContext.CurrentCustomer,
@@ -618,6 +639,7 @@ namespace Nop.Web.Controllers
                     model.NewAddress.Email, model.NewAddress.FaxNumber, model.NewAddress.Company,
                     model.NewAddress.Address1, model.NewAddress.Address2, model.NewAddress.City,
                     model.NewAddress.StateProvinceId, model.NewAddress.ZipPostalCode,
+                    model.NewAddress.CityId, model.NewAddress.CountyId,
                     model.NewAddress.CountryId, customAttributes);
                 if (address == null)
                 {
@@ -630,6 +652,10 @@ namespace Nop.Web.Controllers
                         address.CountryId = null;
                     if (address.StateProvinceId == 0)
                         address.StateProvinceId = null;
+                    if (address.CityId == 0)
+                        address.CityId = null;
+                    if (address.CountyId == 0)
+                        address.CountyId = null;
                     _workContext.CurrentCustomer.Addresses.Add(address);
                 }
                 _workContext.CurrentCustomer.BillingAddress = address;
@@ -642,6 +668,8 @@ namespace Nop.Web.Controllers
             //If we got this far, something failed, redisplay form
             model = PrepareBillingAddressModel(
                 selectedCountryId: model.NewAddress.CountryId,
+                 selectedCityId: model.NewAddress.CityId,
+                  selectedCountyId: model.NewAddress.CountyId,
                 overrideAttributesXml: customAttributes);
             return View(model);
         }
@@ -768,6 +796,7 @@ namespace Nop.Web.Controllers
                     model.NewAddress.Email, model.NewAddress.FaxNumber, model.NewAddress.Company,
                     model.NewAddress.Address1, model.NewAddress.Address2, model.NewAddress.City,
                     model.NewAddress.StateProvinceId, model.NewAddress.ZipPostalCode,
+                    model.NewAddress.CityId,model.NewAddress.CountyId,
                     model.NewAddress.CountryId, customAttributes);
                 if (address == null)
                 {
@@ -1416,6 +1445,9 @@ namespace Nop.Web.Controllers
                         //model is not valid. redisplay the form with errors
                         var billingAddressModel = PrepareBillingAddressModel(
                             selectedCountryId: model.NewAddress.CountryId,
+                              selectedCityId: model.NewAddress.CityId,
+                                selectedCountyId: model.NewAddress.CountyId,
+
                             overrideAttributesXml: customAttributes);
                         billingAddressModel.NewAddressPreselected = true;
                         return Json(new
@@ -1435,6 +1467,7 @@ namespace Nop.Web.Controllers
                         model.NewAddress.Email, model.NewAddress.FaxNumber, model.NewAddress.Company,
                         model.NewAddress.Address1, model.NewAddress.Address2, model.NewAddress.City,
                         model.NewAddress.StateProvinceId, model.NewAddress.ZipPostalCode,
+                        model.NewAddress.CityId,model.NewAddress.CountyId, //JXzfl
                         model.NewAddress.CountryId, customAttributes);
                     if (address == null)
                     {
@@ -1445,38 +1478,75 @@ namespace Nop.Web.Controllers
                         //some validation
                         if (address.CountryId == 0)
                             address.CountryId = null;
+
                         if (address.StateProvinceId == 0)
                             address.StateProvinceId = null;
-                        if (address.CountryId.HasValue && address.CountryId.Value > 0)
-                        {
-                            address.Country = _countryService.GetCountryById(address.CountryId.Value);
-                        }
+
+                        if (address.CityId == 0)
+                            address.CityId = null;
+
+                        if (address.CountyId == 0)
+                            address.CountyId = null;
+
+                        //if (address.CountryId.HasValue && address.CountryId.Value > 0)
+                        //{
+                        //    address.Country = _countryService.GetCountryById(address.CountryId.Value);
+                        //}
+
+                        //if (address.StateProvinceId.HasValue && address.StateProvinceId.Value > 0)
+                        //{
+                        //    address.StateProvince =_stateProvinceService.GetStateProvinceById(address.StateProvinceId.Value);
+                        //}
+
+                        //if (address.CityId.HasValue && address.CityId.Value > 0)
+                        //{
+                        //    address.CityEntity = _cityService.GetCityById(address.CityId.Value);
+                        //}
+
+                        //if (address.CountyId.HasValue && address.CountyId.Value > 0)
+                        //{
+                        //    address.County = _countyService.GetCountyById(address.CountyId.Value);
+                        //}
+
                         _workContext.CurrentCustomer.Addresses.Add(address);
                     }
                     _workContext.CurrentCustomer.BillingAddress = address;
                     _customerService.UpdateCustomer(_workContext.CurrentCustomer);
                 }
 
-                if (cart.RequiresShipping())
-                {
-                    //shipping is required
-                    var shippingAddressModel = PrepareShippingAddressModel(prePopulateNewAddressWithCustomerFields: true);
-                    return Json(new
-                    {
-                        update_section = new UpdateSectionJsonModel
-                        {
-                            name = "shipping",
-                            html = this.RenderPartialViewToString("OpcShippingAddress", shippingAddressModel)
-                        },
-                        goto_section = "shipping"
-                    });
-                }
+                //if (cart.RequiresShipping())
+                //{
+                //    //shipping is required
+                //    var shippingAddressModel = PrepareShippingAddressModel(prePopulateNewAddressWithCustomerFields: true);
+                //    return Json(new
+                //    {
+                //        update_section = new UpdateSectionJsonModel
+                //        {
+                //            name = "shipping",
+                //            html = this.RenderPartialViewToString("OpcShippingAddress", shippingAddressModel)
+                //        },
+                //        goto_section = "shipping"
+                //    });
+                //}
 
                 //shipping is not required
                 _genericAttributeService.SaveAttribute<ShippingOption>(_workContext.CurrentCustomer, SystemCustomerAttributeNames.SelectedShippingOption, null, _storeContext.CurrentStore.Id);
 
-                //load next step
-                return OpcLoadStepAfterShippingMethod(cart);
+                //load next step 
+                //return OpcLoadStepAfterShippingMethod(cart);
+                //JXzfl 
+              
+                var confirmOrderModel = PrepareConfirmOrderModel(cart);
+                return Json(new
+                {
+                    update_section = new UpdateSectionJsonModel
+                    {
+                        name = "confirm-order",
+                        html = this.RenderPartialViewToString("OpcConfirmOrder", confirmOrderModel)
+                    },
+                    goto_section = "confirm_order"
+                });
+                
             }
             catch (Exception exc)
             {
@@ -1597,6 +1667,7 @@ namespace Nop.Web.Controllers
                         model.NewAddress.Email, model.NewAddress.FaxNumber, model.NewAddress.Company,
                         model.NewAddress.Address1, model.NewAddress.Address2, model.NewAddress.City,
                         model.NewAddress.StateProvinceId, model.NewAddress.ZipPostalCode,
+                        model.NewAddress.CityId,model.NewAddress.CountyId,
                         model.NewAddress.CountryId, customAttributes);
                     if (address == null)
                     {
@@ -1612,11 +1683,20 @@ namespace Nop.Web.Controllers
                         if (address.StateProvinceId.HasValue)
                             address.StateProvince = _stateProvinceService.GetStateProvinceById(address.StateProvinceId.Value);
 
+                        if (address.CityId.HasValue)
+                            address.CityEntity = _cityService.GetCityById(address.CityId.Value);
+                        if (address.CountyId.HasValue)
+                            address.County = _countyService.GetCountyById(address.CountyId.Value);
+
                         //other null validations
                         if (address.CountryId == 0)
                             address.CountryId = null;
                         if (address.StateProvinceId == 0)
                             address.StateProvinceId = null;
+                        if (address.CityId == 0)
+                            address.CityId = null;
+                        if (address.CountyId == 0)
+                            address.CountyId = null;
                         _workContext.CurrentCustomer.Addresses.Add(address);
                     }
                     _workContext.CurrentCustomer.ShippingAddress = address;

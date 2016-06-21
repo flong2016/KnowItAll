@@ -67,6 +67,11 @@ namespace Nop.Web.Controllers
         private readonly IAddressService _addressService;
         private readonly ICountryService _countryService;
         private readonly IStateProvinceService _stateProvinceService;
+        #region JXzfl
+        private readonly ICityService _cityService;
+        private readonly ICountyService _countyService;
+        #endregion
+
         private readonly IOrderService _orderService;
         private readonly IPictureService _pictureService;
         private readonly INewsLetterSubscriptionService _newsLetterSubscriptionService;
@@ -115,6 +120,11 @@ namespace Nop.Web.Controllers
             IAddressService addressService,
             ICountryService countryService,
             IStateProvinceService stateProvinceService,
+
+            //JXzfl
+            ICityService cityService,
+            ICountyService countyService,
+
             IOrderService orderService,
             IPictureService pictureService, 
             INewsLetterSubscriptionService newsLetterSubscriptionService,
@@ -158,6 +168,8 @@ namespace Nop.Web.Controllers
             this._addressService = addressService;
             this._countryService = countryService;
             this._stateProvinceService = stateProvinceService;
+            this._cityService = cityService;
+            this._countyService = countyService;
             this._orderService = orderService;
             this._pictureService = pictureService;
             this._newsLetterSubscriptionService = newsLetterSubscriptionService;
@@ -315,7 +327,7 @@ namespace Nop.Web.Controllers
             {
                 model.VatNumber = customer.GetAttribute<string>(SystemCustomerAttributeNames.VatNumber);
                 model.FirstName = customer.GetAttribute<string>(SystemCustomerAttributeNames.FirstName);
-                model.LastName =  customer.GetAttribute<string>(SystemCustomerAttributeNames.LastName);
+                model.LastName = customer.GetAttribute<string>(SystemCustomerAttributeNames.LastName);
                 model.Gender = customer.GetAttribute<string>(SystemCustomerAttributeNames.Gender);
                 var dateOfBirth = customer.GetAttribute<DateTime?>(SystemCustomerAttributeNames.DateOfBirth);
                 if (dateOfBirth.HasValue)
@@ -1433,6 +1445,8 @@ namespace Nop.Web.Controllers
                     addressSettings: _addressSettings,
                     localizationService: _localizationService,
                     stateProvinceService: _stateProvinceService,
+                    cityService:_cityService,
+                    countyService:_countyService,
                     addressAttributeFormatter: _addressAttributeFormatter,
                     loadCountries: () => _countryService.GetAllCountries(_workContext.WorkingLanguage.Id));
                 model.Addresses.Add(addressModel);
@@ -1479,6 +1493,8 @@ namespace Nop.Web.Controllers
                 addressSettings:_addressSettings,
                 localizationService:_localizationService,
                 stateProvinceService: _stateProvinceService,
+                cityService:_cityService,
+                countyService:_countyService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
                 loadCountries: () => _countryService.GetAllCountries(_workContext.WorkingLanguage.Id));
@@ -1527,6 +1543,8 @@ namespace Nop.Web.Controllers
                 addressSettings:_addressSettings,
                 localizationService:_localizationService,
                 stateProvinceService: _stateProvinceService,
+                cityService:_cityService,
+                countyService:_countyService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
                 loadCountries: () => _countryService.GetAllCountries(_workContext.WorkingLanguage.Id),

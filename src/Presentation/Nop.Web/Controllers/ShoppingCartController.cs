@@ -142,6 +142,7 @@ namespace Nop.Web.Controllers
             CaptchaSettings captchaSettings, 
             AddressSettings addressSettings,
             RewardPointsSettings rewardPointsSettings,
+
             ICityService cityService,
             ICountyService countyService
             )
@@ -167,6 +168,7 @@ namespace Nop.Web.Controllers
             this._giftCardService = giftCardService;
             this._countryService = countryService;
             this._stateProvinceService = stateProvinceService;
+
             this._shippingService = shippingService;
             this._orderTotalCalculationService = orderTotalCalculationService;
             this._checkoutAttributeService = checkoutAttributeService;
@@ -190,6 +192,7 @@ namespace Nop.Web.Controllers
             this._captchaSettings = captchaSettings;
             this._addressSettings = addressSettings;
             this._rewardPointsSettings = rewardPointsSettings;
+
             this._cityService = cityService;
             this._countyService =countyService;
         }

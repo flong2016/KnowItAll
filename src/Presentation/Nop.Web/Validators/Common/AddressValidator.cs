@@ -26,15 +26,15 @@ namespace Nop.Web.Validators.Common
             RuleFor(x => x.Email)
                 .EmailAddress()
                 .WithMessage(localizationService.GetResource("Common.WrongEmail"));
-            if (addressSettings.CountryEnabled)
-            {
-                RuleFor(x => x.CountryId)
-                    .NotNull()
-                    .WithMessage(localizationService.GetResource("Address.Fields.Country.Required"));
-                RuleFor(x => x.CountryId)
-                    .NotEqual(0)
-                    .WithMessage(localizationService.GetResource("Address.Fields.Country.Required"));
-            }
+            //if (addressSettings.CountryEnabled)
+            //{
+            //    RuleFor(x => x.CountryId)
+            //        .NotNull()
+            //        .WithMessage(localizationService.GetResource("Address.Fields.Country.Required"));
+            //    RuleFor(x => x.CountryId)
+            //        .NotEqual(0)
+            //        .WithMessage(localizationService.GetResource("Address.Fields.Country.Required"));
+            //}
             if (addressSettings.CountryEnabled && addressSettings.StateProvinceEnabled)
             {
                 Custom(x =>
@@ -62,31 +62,27 @@ namespace Nop.Web.Validators.Common
             {
                 RuleFor(x => x.Address1).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.StreetAddress.Required"));
             }
-            if (addressSettings.StreetAddress2Required && addressSettings.StreetAddress2Enabled)
-            {
-                RuleFor(x => x.Address2).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.StreetAddress2.Required"));
-            }
-            if (addressSettings.ZipPostalCodeRequired && addressSettings.ZipPostalCodeEnabled)
-            {
-                RuleFor(x => x.ZipPostalCode).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.ZipPostalCode.Required"));
-            }
-            if (addressSettings.CityRequired && addressSettings.CityEnabled)
-            {
-                RuleFor(x => x.City).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.City.Required"));
-            }
+            //if (addressSettings.StreetAddress2Required && addressSettings.StreetAddress2Enabled)
+            //{
+            //    RuleFor(x => x.Address2).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.StreetAddress2.Required"));
+            //}
+            //if (addressSettings.ZipPostalCodeRequired && addressSettings.ZipPostalCodeEnabled)
+            //{
+            //    RuleFor(x => x.ZipPostalCode).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.ZipPostalCode.Required"));
+            //}
+            //if (addressSettings.CityRequired && addressSettings.CityEnabled)
+            //{
+            //    RuleFor(x => x.City).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.City.Required"));
+            //}
             if (addressSettings.PhoneRequired && addressSettings.PhoneEnabled)
             {
                 RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Phone.Required"));
-                RuleFor(x => x.PhoneNumber).Must(BeAValidPhone).WithMessage("电话号码格式不正确");//JXzfl
+                RuleFor(x => x.PhoneNumber).Matches(@"^1\d{10,12}$").WithMessage("电话号码格式不正确");
             }
-            if (addressSettings.FaxRequired && addressSettings.FaxEnabled)
-            {
-                RuleFor(x => x.FaxNumber).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Fax.Required"));
-            }
-        }
-        private bool BeAValidPhone(string phoneNumber)
-        {
-            return System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^[1]+[3,5]+\d{9}");
+            //if (addressSettings.FaxRequired && addressSettings.FaxEnabled)
+            //{
+            //    RuleFor(x => x.FaxNumber).NotEmpty().WithMessage(localizationService.GetResource("Account.Fields.Fax.Required"));
+            //}
         }
     }
 }
