@@ -1067,7 +1067,7 @@ namespace Nop.Services.Orders
                 //process payment
                 ProcessPaymentResult processPaymentResult = null;
                 //skip payment workflow if order total equals zero
-                var skipPaymentWorkflow = details.OrderTotal == decimal.Zero;
+                var skipPaymentWorkflow = true; //JXzfl = details.OrderTotal == decimal.Zero;
                 if (!skipPaymentWorkflow)
                 {
                     var paymentMethod = _paymentService.LoadPaymentMethodBySystemName(processPaymentRequest.PaymentMethodSystemName);

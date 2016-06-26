@@ -158,7 +158,8 @@ namespace Nop.Web.Controllers
         [NonAction]
         protected virtual bool IsPaymentWorkflowRequired(IList<ShoppingCartItem> cart, bool ignoreRewardPoints = false)
         {
-            bool result = true;
+            //JXzfl
+            bool result = false;
 
             //check whether order total equals zero
             decimal? shoppingCartTotalBase = _orderTotalCalculationService.GetShoppingCartTotal(cart, ignoreRewardPoints);

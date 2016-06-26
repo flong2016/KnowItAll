@@ -629,7 +629,7 @@ namespace Nop.Web.Controllers
                 return new HttpUnauthorizedResult();
 
             var model = PrepareOrderDetailsModel(order);
-            model.PrintMode = true;
+            model.PrintMode = false;//JXzfl true;
 
             return View("Details", model);
         }
