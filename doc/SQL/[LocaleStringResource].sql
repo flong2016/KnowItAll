@@ -1,0 +1,1 @@
+ update    [LocaleStringResource] set [ResourceValue]='ÃÌº”µÿ÷∑'  where [ResourceName]='Common.AddNew'
