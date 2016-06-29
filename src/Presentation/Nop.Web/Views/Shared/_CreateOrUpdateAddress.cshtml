@@ -21,6 +21,9 @@
                             ddlCitys.append($('<option></option>').val(option.id).html(option.name));
                         });
                         estimateProgress.hide();
+
+                        $("#@Html.FieldIdFor(model => model.CityId)").change();
+
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         alert('Failed to retrieve states.');

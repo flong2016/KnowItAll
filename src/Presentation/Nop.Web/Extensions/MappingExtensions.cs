@@ -189,7 +189,7 @@ namespace Nop.Web.Extensions
                       .ToList();
                     if (states.Count > 0)
                     {
-                        model.AvailableStates.Add(new SelectListItem { Text = localizationService.GetResource("Address.SelectState"), Value = "0" });
+                        model.AvailableStates.Add(new SelectListItem { Text = localizationService.GetResource("Address.SelectState"), Value = "99" });
 
                         foreach (var s in states)
                         {
@@ -221,19 +221,30 @@ namespace Nop.Web.Extensions
                         cityService.GetCityByStateProvinceId(model.StateProvinceId != null
                             ? model.StateProvinceId.Value
                             : firstProvince.Id).ToList();
-                    var firstCity = cityService.GetCityByStateProvinceId(firstProvince.Id).FirstOrDefault() ??
+                    var firstCity = cityService.GetCityByStateProvinceId(99).FirstOrDefault() ??
                                      new City();
                     if (citys.Count > 0)
                     {
-                        foreach (var c in citys)
+                        if (model.CityId == null)
                         {
                             model.AvailableCity.Add(new SelectListItem()
                             {
-                                Text = c.GetLocalized(x => x.Name),
-                                Value = c.Id.ToString(),
-                                Selected = (c.Id == model.CityId)
+                                Text = localizationService.GetResource("Address.SelectCity"),
+                                Value = "283"
                             });
                         }
+                        else {
+                            foreach (var c in citys)
+                            {
+                                model.AvailableCity.Add(new SelectListItem()
+                                {
+                                    Text = c.GetLocalized(x => x.Name),
+                                    Value = c.Id.ToString(),
+                                    Selected = (c.Id == model.CityId)
+                                });
+                            }
+                        }
+                       
                     }
                     else
                     {
@@ -246,17 +257,29 @@ namespace Nop.Web.Extensions
                     if (countyService == null)
                         throw new ArgumentNullException("countyService");
                     var counties = countyService.GetCountyByCityId(model.CityId.HasValue ? model.CityId.Value : firstCity.Id);
+                    var firstCounty = countyService.GetCountyByCityId(283).FirstOrDefault() ?? new  County();
                     if (counties.Count > 0)
                     {
-                        foreach (var county in counties)
+                        if (model.CountyId == null)
                         {
                             model.AvailableCounty.Add(new SelectListItem()
                             {
-                                Text = county.GetLocalized(x => x.Name),
-                                Value = county.Id.ToString(),
-                                Selected = (county.Id == model.CityId)
+                                Text = localizationService.GetResource("Address.SelectCounty"),
+                                Value = "2280"
                             });
                         }
+                        else {
+                            foreach (var county in counties)
+                            {
+                                model.AvailableCounty.Add(new SelectListItem()
+                                {
+                                    Text = county.GetLocalized(x => x.Name),
+                                    Value = county.Id.ToString(),
+                                    Selected = (county.Id == model.CityId)
+                                });
+                            }
+                        }
+                       
                     }
                     else
                     {
