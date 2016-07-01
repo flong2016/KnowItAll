@@ -219,14 +219,15 @@
            @Html.Widget("order_summary_cart_footer")
            @if (Model.IsEditable)
            {
-               <div class="cart-collaterals">
+               //JXzfl
+               @*<div class="cart-collaterals">
                    <div class="deals">
                        @Html.Partial("_DiscountBox", Model.DiscountBox)
                        @Html.Partial("_GiftCardBox", Model.GiftCardBox)
                        @Html.Widget("order_summary_content_deals")
                    </div>
                    @Html.Partial("EstimateShipping", Model.EstimateShipping)
-               </div>
+               </div>*@
            }
            <div class="totals">
                @Html.Action("OrderTotals", "ShoppingCart", new { isEditable = Model.IsEditable })
