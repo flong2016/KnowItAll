@@ -80,13 +80,16 @@ namespace Nop.Web.Extensions
             AddressSettings addressSettings,
             ILocalizationService localizationService = null,
             IStateProvinceService stateProvinceService = null,
+
+        #region JXzfl
+            ICityService cityService = null,
+            ICountyService countyService = null,
+        #endregion
+
             IAddressAttributeService addressAttributeService = null,
             IAddressAttributeParser addressAttributeParser = null,
             IAddressAttributeFormatter addressAttributeFormatter = null,
-            #region JXzfl
-            ICityService cityService = null,
-            ICountyService countyService = null,
-            #endregion
+        
 
             Func<IList<Country>> loadCountries = null,
             bool prePopulateWithCustomerFields = false,

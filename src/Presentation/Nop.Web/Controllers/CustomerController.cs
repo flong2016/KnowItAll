@@ -1572,6 +1572,8 @@ namespace Nop.Web.Controllers
                 addressSettings: _addressSettings,
                 localizationService: _localizationService,
                 stateProvinceService: _stateProvinceService,
+                cityService:_cityService,
+                countyService :_countyService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
                 loadCountries: () => _countryService.GetAllCountries(_workContext.WorkingLanguage.Id));
@@ -1618,6 +1620,8 @@ namespace Nop.Web.Controllers
                 addressSettings: _addressSettings,
                 localizationService: _localizationService,
                 stateProvinceService: _stateProvinceService,
+                cityService:_cityService,
+                countyService:_countyService,
                 addressAttributeService: _addressAttributeService,
                 addressAttributeParser: _addressAttributeParser,
                 loadCountries: () => _countryService.GetAllCountries(_workContext.WorkingLanguage.Id),

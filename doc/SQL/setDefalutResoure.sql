@@ -23,5 +23,12 @@ begin
 end
  
 
-  
+update Setting set value='True' where Name='customersettings.hidedownloadableproductstab' ---下载商品
+or name ='customersettings.hidebackinstocksubscriptionstab'  --到货订阅
+
+
+
+update Setting set value='Flase' where name='rewardpointssettings.enabled' --禁用 我的积分  
+
+update LocaleStringResource set ResourceValue='退货原因'   where ResourceName='Account.CustomerReturnRequests.Reason'
  
