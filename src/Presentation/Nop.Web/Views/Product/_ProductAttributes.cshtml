@@ -49,70 +49,76 @@
                             }
                             break;
                       @*case AttributeControlType.RadioList:
-                            {
-                        <ul class="option-list">
-                            @foreach (var attributeValue in attribute.Values)
-                            {
-                                var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
-                                    attributeValue.Name :
-                                    T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
-                                <li>
-                                    <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" />
-                                    <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
-                                </li>
-                            }
-                        </ul>
-                            }
-                     break;*@ 
-
-                        //JXzfl
+           {
+       <ul class="option-list">
+           @foreach (var attributeValue in attribute.Values)
+           {
+               var attributeName = String.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
+                   attributeValue.Name :
+                   T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment).Text;
+               <li>
+                   <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" />
+                   <label for="@(controlId)_@(attributeValue.Id)">@attributeName</label>
+               </li>
+           }
+       </ul>
+           }
+    break;*@ 
+                    //JXzfl
                         case AttributeControlType.RadioList:
                             {
 
                                 <div style="min-height: 25px;" class="choosebox">
                                     @*单选框他会有很多个选项，foreach，高手忽略这句*@
-                                    <ul class="clearfix">
+                                    <ul class="clearfix option-list">
                                         @foreach (var pvaValue in attribute.Values)
                                         {
-                                          <li>
+                                            <li>
                                                 @*把他的单选按钮给通过Display:none隐藏起来*@
                                                 <input id="@(controlId)_@(pvaValue.Id)" type="radio" name="@(controlId)" value="@pvaValue.Id" checked="@pvaValue.IsPreSelected" style="display: none" />
                                                 @*下面是给用户显示的被美容过的单选按钮，我没法往出来贴CSS，想办法完了给大家一个下载地址吧*@
-                                                <a title="@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)" href="#" class="size_radioToggle">
-                                                    <samp class="value">@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)</samp>
+                                                <a   title="@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)" href="#" class="size_radioToggle">
+                                                    <label for="@(controlId)_@(pvaValue.Id)" class="value">@pvaValue.Name @(!String.IsNullOrEmpty(pvaValue.PriceAdjustment) ? " [" + pvaValue.PriceAdjustment + "]" : null)</label>
 
                                                 </a><b></b>
-                                        </li>
+                                            </li>
                                         }
                                     </ul>
+                                    <script type="text/javascript">
+ 
+                                        $(function(){
+                                            $('.choosebox li a').click(function(){
+                                                var thisToggle = $(this).is('.size_radioToggle') ? $(this) : $(this).prev();
+                                                var checkBox = thisToggle.prev();
+                                                checkBox.trigger('click');
+                                                var name = checkBox.attr("name");
+                                                $("[name=" + name + "]").next("a").removeClass("current");//其他的单选按钮移除选中效果
+                                                thisToggle.addClass('current');//当前单选按钮添加选中效果
+
+                                                //$('.size_radioToggle').removeClass('current');
+                                                //thisToggle.addClass('current');
+                                              
+                                            });
+                                        });
+
+                                        $(".choosebox li a").click(function(){
+                                            var text = $(this).html();
+                                            $(".choosetext label").html(text);
+                                            $("#result").html("" + getSelectedValue("dress-size"));
+                                        });
+
+                                        function getSelectedValue(id){
+                                            return
+                                            $("#" + id).find(".choosetext label.value").html();
+                                        }
+                                    </script>
                                 </div>
-   
+                               <br/>
                             }
-                            <script type="text/javascript">
-
-                                $(function(){   
-                                    $('.choosebox li a').click(function(){
-                                        var thisToggle = $(this).is('.size_radioToggle') ? $(this) : $(this).prev();
-                                        var checkBox = thisToggle.prev();
-                                        checkBox.trigger('click');
-                                        $('.size_radioToggle').removeClass('current');
-                                        thisToggle.addClass('current');
-                                        return false;
-                                    });		
-                                });
-
-                                $(".choosebox li a").click(function(){
-                                    var text = $(this).html();
-                                    $(".choosetext span").html(text);
-                                    $("#result").html("" + getSelectedValue("dress-size"));
-                                });
-			
-                                function getSelectedValue(id){
-                                    return 
-                                    $("#" + id).find(".choosetext span.value").html();
-                                }
-                            </script>
+                           
                             break; 
+                        
+                       
                             
                           case AttributeControlType.Checkboxes:
                           case AttributeControlType.ReadonlyCheckboxes:
