@@ -8,7 +8,7 @@
 }
 <div class="order-summary-content">
    @Html.Widget("order_summary_content_before")
-    @Html.Partial("_OrderReviewData", Model.OrderReviewData)
+  
    @if (Model.Items.Count > 0)
    {
        if (Model.Warnings.Count > 0)
@@ -193,10 +193,15 @@
             //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
             //of course, you can modify appropriate locales to include VAT info there
         <div class="tax-shipping-info">
+           
             @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
         </div>
         }
+        
+     
+        
        <div class="cart-options">
+           
            @if (Model.IsEditable)
            {
                <div class="common-buttons">
@@ -215,22 +220,32 @@
                </div>
            }
        </div>
+      
        <div class="cart-footer">
            @Html.Widget("order_summary_cart_footer")
-           @if (Model.IsEditable)
+           <div class="cart-collaterals" style="background-color: #f9f9f9; float: left;  ">
+               <div class="">
+                   @Html.Partial("_OrderReviewData", Model.OrderReviewData)
+               </div>
+           </div>
+               @if (Model.IsEditable)
            {
                //JXzfl
-               @*<div class="cart-collaterals">
-                   <div class="deals">
-                       @Html.Partial("_DiscountBox", Model.DiscountBox)
-                       @Html.Partial("_GiftCardBox", Model.GiftCardBox)
-                       @Html.Widget("order_summary_content_deals")
-                   </div>
-                   @Html.Partial("EstimateShipping", Model.EstimateShipping)
-               </div>*@
+                   @*<div class="cart-collaterals">
+                    <div class="deals">
+                        @Html.Partial("_DiscountBox", Model.DiscountBox)
+                        @Html.Partial("_GiftCardBox", Model.GiftCardBox)
+                        @Html.Widget("order_summary_content_deals")
+                    </div>
+                    @Html.Partial("EstimateShipping", Model.EstimateShipping)
+                </div>*@
            }
-           <div class="totals">
+           <div class="totals" style="padding-bottom:65px;">
+
+
+
                @Html.Action("OrderTotals", "ShoppingCart", new { isEditable = Model.IsEditable })
+
                @if (Model.IsEditable)
                {
                    if (!String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
@@ -284,7 +299,7 @@
                    </div>
                }
            </div>
-       </div>
+           </div>
        if (Model.IsEditable)
        {
             @Html.Action("CrossSellProducts", "Product")
