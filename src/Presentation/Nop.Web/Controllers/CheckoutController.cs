@@ -1380,7 +1380,7 @@ namespace Nop.Web.Controllers
 
             var model = new OnePageCheckoutModel
             {
-                ShippingRequired = cart.RequiresShipping(),
+                ShippingRequired =false,//JXzfl cart.RequiresShipping(),
                 DisableBillingAddressCheckoutStep = _orderSettings.DisableBillingAddressCheckoutStep
             };
             return View(model);

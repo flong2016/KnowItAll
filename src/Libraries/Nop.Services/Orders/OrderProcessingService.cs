@@ -332,6 +332,8 @@ namespace Nop.Services.Orders
                 if (details.Customer.BillingAddress == null)
                     throw new NopException("Billing address is not provided");
 
+                details.Customer.ShippingAddress = details.Customer.BillingAddress;//JXzfl
+
                 if (!CommonHelper.IsValidEmail(details.Customer.BillingAddress.Email))
                     throw new NopException("Email is not valid");
 

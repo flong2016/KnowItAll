@@ -652,7 +652,7 @@ namespace Nop.Web.Controllers
                 //shipping info
                 if (cart.RequiresShipping())
                 {
-                    model.OrderReviewData.IsShippable = true;
+                    model.OrderReviewData.IsShippable =  true;
 
                     if (_shippingSettings.AllowPickUpInStore)
                     {
@@ -661,15 +661,24 @@ namespace Nop.Web.Controllers
 
                     if (!model.OrderReviewData.SelectedPickUpInStore)
                     {
-                        var shippingAddress = _workContext.CurrentCustomer.ShippingAddress;
+                        //JXzfl 配送地址统一使用账单地址
+                        //var shippingAddress = _workContext.CurrentCustomer.ShippingAddress;
+                        //if (shippingAddress != null)
+                        //{
+                        //    model.OrderReviewData.ShippingAddress.PrepareModel(
+                        //        address: shippingAddress, 
+                        //        excludeProperties: false,
+                        //        addressSettings: _addressSettings,
+                        //        addressAttributeFormatter: _addressAttributeFormatter);
+                        //}
+
+                        var shippingAddress = _workContext.CurrentCustomer.BillingAddress;
                         if (shippingAddress != null)
-                        {
                             model.OrderReviewData.ShippingAddress.PrepareModel(
-                                address: shippingAddress, 
+                                address: billingAddress,
                                 excludeProperties: false,
                                 addressSettings: _addressSettings,
                                 addressAttributeFormatter: _addressAttributeFormatter);
-                        }
                     }
                     
                     
