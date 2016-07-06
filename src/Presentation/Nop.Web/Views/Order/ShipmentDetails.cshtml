@@ -70,8 +70,9 @@
                     <li class="phone">
                         @T("Order.Shipments.Phone"): @Model.Order.ShippingAddress.PhoneNumber
                     </li>
-                    <li class="fax">
-                        @T("Order.Shipments.Fax"): @Model.Order.ShippingAddress.FaxNumber</li>
+
+                    @*JXzfl <li class="fax">
+                        @T("Order.Shipments.Fax"): @Model.Order.ShippingAddress.FaxNumber</li>*@
                     @if (!String.IsNullOrEmpty(Model.Order.ShippingAddress.Company))
                     {
                         <li class="company">
@@ -79,16 +80,16 @@
                         </li>
                     }
                     <li class="address1">
-                        @Model.Order.ShippingAddress.Address1</li>
+                       详细地址: @Model.Order.ShippingAddress.StateProvinceName @Model.Order.ShippingAddress.CityName @Model.Order.ShippingAddress.CountyName   @Model.Order.ShippingAddress.Address1</li>
                     @if (!String.IsNullOrEmpty(Model.Order.ShippingAddress.Address2))
                     {
                         <li class="address2">
                             @Model.Order.ShippingAddress.Address2
                         </li>
                     }
-                    <li class="city-state-zip">
+                    @*<li class="city-state-zip">
                         @Model.Order.ShippingAddress.City, @Model.Order.ShippingAddress.StateProvinceName
-                        @Model.Order.ShippingAddress.ZipPostalCode</li>
+                        @Model.Order.ShippingAddress.ZipPostalCode</li>*@
                     @if (!String.IsNullOrEmpty(Model.Order.ShippingAddress.CountryName))
                     {
                         <li class="country">

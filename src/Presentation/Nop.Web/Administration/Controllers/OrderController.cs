@@ -63,6 +63,10 @@ namespace Nop.Admin.Controllers
         private readonly IAddressService _addressService;
         private readonly ICountryService _countryService;
         private readonly IStateProvinceService _stateProvinceService;
+        //JXzfl
+        private readonly ICityService _cityService;
+        private readonly ICountyService _countyService;
+
         private readonly IProductService _productService;
         private readonly IExportManager _exportManager;
         private readonly IPermissionService _permissionService;
@@ -114,6 +118,10 @@ namespace Nop.Admin.Controllers
             IAddressService addressService,
             ICountryService countryService,
             IStateProvinceService stateProvinceService,
+            //JXzfl
+            ICityService  cityService,
+            ICountyService countyService,
+
             IProductService productService,
             IExportManager exportManager,
             IPermissionService permissionService,
@@ -160,6 +168,10 @@ namespace Nop.Admin.Controllers
             this._addressService = addressService;
             this._countryService = countryService;
             this._stateProvinceService = stateProvinceService;
+            //JXzfl
+            this._cityService=cityService;
+            this._countyService = countyService;
+
             this._productService = productService;
             this._exportManager = exportManager;
             this._permissionService = permissionService;
@@ -2641,7 +2653,10 @@ namespace Nop.Admin.Controllers
             foreach (var c in _countryService.GetAllCountries(showHidden: true))
                 model.Address.AvailableCountries.Add(new SelectListItem { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Id == address.CountryId) });
             //states
-            var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, showHidden: true).ToList() : new List<StateProvince>();
+          //  var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, showHidden: true).ToList() : new List<StateProvince>();
+            var states = _stateProvinceService
+                       .GetStateProvincesByCountryId(21)//这块直接给写死成中国
+                       .ToList();
             if (states.Count > 0)
             {
                 foreach (var s in states)
@@ -2649,6 +2664,89 @@ namespace Nop.Admin.Controllers
             }
             else
                 model.Address.AvailableStates.Add(new SelectListItem { Text = _localizationService.GetResource("Admin.Address.OtherNonUS"), Value = "0" });
+
+            #region JXzfl
+
+            if (_cityService == null)
+                throw new ArgumentNullException("cityService");
+            var firstProvince = _stateProvinceService.GetStateProvincesByCountryId(21).FirstOrDefault() ??
+                                new StateProvince();
+            var citys =
+                _cityService.GetCityByStateProvinceId(model.Address.StateProvinceId != null
+                    ? model.Address.StateProvinceId.Value
+                    : firstProvince.Id).ToList();
+            var firstCity = _cityService.GetCityByStateProvinceId(99).FirstOrDefault() ??
+                             new City();
+            if (citys.Count > 0)
+            {
+                if (model.Address.CityId == null)
+                {
+                    model.Address.AvailableCity.Add(new SelectListItem()
+                    {
+                        Text = _localizationService.GetResource("Address.SelectCity"),
+                        Value = "283"
+                    });
+                }
+                else
+                {
+                    foreach (var c in citys)
+                    {
+                        model.Address.AvailableCity.Add(new SelectListItem()
+                        {
+                            Text = c.GetLocalized(x => x.Name),
+                            Value = c.Id.ToString(),
+                            Selected = (c.Id == model.Address.CityId)
+                        });
+                    }
+                }
+
+            }
+            else
+            {
+                model.Address.AvailableCity.Add(new SelectListItem()
+                {
+                    Text = _localizationService.GetResource("Address.OtherNonUS"),
+                    Value = "0"
+                });
+            }
+            if (_countyService == null)
+                throw new ArgumentNullException("countyService");
+            var counties = _countyService.GetCountyByCityId(model.Address.CityId.HasValue ? model.Address.CityId.Value : firstCity.Id);
+            var firstCounty = _countyService.GetCountyByCityId(283).FirstOrDefault() ?? new County();
+            if (counties.Count > 0)
+            {
+                if (model.Address.CountyId == null)
+                {
+                    model.Address.AvailableCounty.Add(new SelectListItem()
+                    {
+                        Text = _localizationService.GetResource("Address.SelectCounty"),
+                        Value = "2280"
+                    });
+                }
+                else
+                {
+                    foreach (var county in counties)
+                    {
+                        model.Address.AvailableCounty.Add(new SelectListItem()
+                        {
+                            Text = county.GetLocalized(x => x.Name),
+                            Value = county.Id.ToString(),
+                            Selected = (county.Id == model.Address.CityId)
+                        });
+                    }
+                }
+
+            }
+            else
+            {
+                model.Address.AvailableCity.Add(new SelectListItem()
+                {
+                    Text = _localizationService.GetResource("Address.OtherNonUS"),
+                    Value = "0"
+                });
+            }
+
+            #endregion
             //customer attribute services
             model.Address.PrepareCustomAddressAttributes(address, _addressAttributeService, _addressAttributeParser);
 
@@ -2731,7 +2829,10 @@ namespace Nop.Admin.Controllers
             foreach (var c in _countryService.GetAllCountries(showHidden: true))
                 model.Address.AvailableCountries.Add(new SelectListItem { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Id == address.CountryId) });
             //states
-            var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, showHidden: true).ToList() : new List<StateProvince>();
+         //   var states = address.Country != null ? _stateProvinceService.GetStateProvincesByCountryId(address.Country.Id, showHidden: true).ToList() : new List<StateProvince>();
+            var states = _stateProvinceService
+                      .GetStateProvincesByCountryId(21)//这块直接给写死成中国
+                      .ToList();
             if (states.Count > 0)
             {
                 foreach (var s in states)
@@ -2739,6 +2840,89 @@ namespace Nop.Admin.Controllers
             }
             else
                 model.Address.AvailableStates.Add(new SelectListItem { Text = _localizationService.GetResource("Admin.Address.OtherNonUS"), Value = "0" });
+
+            #region JXzfl
+
+            if (_cityService == null)
+                throw new ArgumentNullException("cityService");
+            var firstProvince = _stateProvinceService.GetStateProvincesByCountryId(21).FirstOrDefault() ??
+                                new StateProvince();
+            var citys =
+                _cityService.GetCityByStateProvinceId(model.Address.StateProvinceId != null
+                    ? model.Address.StateProvinceId.Value
+                    : firstProvince.Id).ToList();
+            var firstCity = _cityService.GetCityByStateProvinceId(99).FirstOrDefault() ??
+                             new City();
+            if (citys.Count > 0)
+            {
+                if (model.Address.CityId == null)
+                {
+                    model.Address.AvailableCity.Add(new SelectListItem()
+                    {
+                        Text = _localizationService.GetResource("Address.SelectCity"),
+                        Value = "283"
+                    });
+                }
+                else
+                {
+                    foreach (var c in citys)
+                    {
+                        model.Address.AvailableCity.Add(new SelectListItem()
+                        {
+                            Text = c.GetLocalized(x => x.Name),
+                            Value = c.Id.ToString(),
+                            Selected = (c.Id == model.Address.CityId)
+                        });
+                    }
+                }
+
+            }
+            else
+            {
+                model.Address.AvailableCity.Add(new SelectListItem()
+                {
+                    Text = _localizationService.GetResource("Address.OtherNonUS"),
+                    Value = "0"
+                });
+            }
+            if (_countyService == null)
+                throw new ArgumentNullException("countyService");
+            var counties = _countyService.GetCountyByCityId(model.Address.CityId.HasValue ? model.Address.CityId.Value : firstCity.Id);
+            var firstCounty = _countyService.GetCountyByCityId(283).FirstOrDefault() ?? new County();
+            if (counties.Count > 0)
+            {
+                if (model.Address.CountyId == null)
+                {
+                    model.Address.AvailableCounty.Add(new SelectListItem()
+                    {
+                        Text = _localizationService.GetResource("Address.SelectCounty"),
+                        Value = "2280"
+                    });
+                }
+                else
+                {
+                    foreach (var county in counties)
+                    {
+                        model.Address.AvailableCounty.Add(new SelectListItem()
+                        {
+                            Text = county.GetLocalized(x => x.Name),
+                            Value = county.Id.ToString(),
+                            Selected = (county.Id == model.Address.CityId)
+                        });
+                    }
+                }
+
+            }
+            else
+            {
+                model.Address.AvailableCity.Add(new SelectListItem()
+                {
+                    Text = _localizationService.GetResource("Address.OtherNonUS"),
+                    Value = "0"
+                });
+            }
+
+            #endregion
             //customer attribute services
             model.Address.PrepareCustomAddressAttributes(address, _addressAttributeService, _addressAttributeParser);
 

@@ -39,40 +39,30 @@
                         </td>
                     </tr>
                 }
-                @if (Model.BillingAddress.FaxEnabled)
-                {
-                    <tr>
-                        <td>
-                            @T("Admin.Orders.Address.Fax"):
-                        </td>
-                        <td>
-                            @Model.BillingAddress.FaxNumber
-                        </td>
-                    </tr>
-                }
-                @if (Model.BillingAddress.CompanyEnabled)
-                {
-                    <tr>
-                        <td>
-                            @T("Admin.Orders.Address.Company"):
-                        </td>
-                        <td>
-                            @Model.BillingAddress.Company
-                        </td>
-                    </tr>
-                }
-                @if (Model.BillingAddress.StreetAddressEnabled)
-                {
-                    <tr>
-                        <td>
-                            @T("Admin.Orders.Address.Address1"):
-                        </td>
-                        <td>
-                            @Model.BillingAddress.Address1
-                        </td>
-                    </tr>
-                }
-                @if (Model.BillingAddress.StreetAddress2Enabled)
+                                @*JXzfl
+        @if (Model.BillingAddress.FaxEnabled)
+    {
+        <tr>
+            <td>
+                @T("Admin.Orders.Address.Fax"):
+            </td>
+            <td>
+                @Model.BillingAddress.FaxNumber
+            </td>
+        </tr>
+    }
+    @if (Model.BillingAddress.CompanyEnabled)
+    {
+        <tr>
+            <td>
+                @T("Admin.Orders.Address.Company"):
+            </td>
+            <td>
+                @Model.BillingAddress.Company
+            </td>
+        </tr>
+    }
+                         @if (Model.BillingAddress.StreetAddress2Enabled)
                 {
                     <tr>
                         <td>
@@ -94,39 +84,58 @@
                         </td>
                     </tr>
                 }
+
+            @if (Model.BillingAddress.StreetAddressEnabled)
+            {
+                <tr>
+                    <td>
+                        @T("Admin.Orders.Address.Address1"):
+                    </td>
+                    <td>
+                        @Model.BillingAddress.Address1
+                    </td>
+                </tr>
+            }*@
+           
                 @if (Model.BillingAddress.StateProvinceEnabled)
                 {
                     <tr>
                         <td>
-                            @T("Admin.Orders.Address.StateProvince"):
+                            @*@T("Admin.Orders.Address.StateProvince"):*@
+                            详细地址:
                         </td>
                         <td>
-                            @Model.BillingAddress.StateProvinceName
+                            @Model.BillingAddress.StateProvinceName  @Model.BillingAddress.CityName @Model.BillingAddress.CountyName
+                                 @if (Model.BillingAddress.StreetAddressEnabled)
+                                { 
+                                     @Model.BillingAddress.Address1
+                                 }
                         </td>
                     </tr>
                 }
-                @if (Model.BillingAddress.ZipPostalCodeEnabled)
-                {
-                    <tr>
-                        <td>
-                            @T("Admin.Orders.Address.ZipPostalCode"):
-                        </td>
-                        <td>
-                            @Model.BillingAddress.ZipPostalCode
-                        </td>
-                    </tr>
-                }
-                @if (Model.BillingAddress.CountryEnabled)
-                {
-                    <tr>
-                        <td>
-                            @T("Admin.Orders.Address.Country"):
-                        </td>
-                        <td>
-                            @Model.BillingAddress.CountryName
-                        </td>
-                    </tr>
-                }
+                @*JXzfl
+        @if (Model.BillingAddress.ZipPostalCodeEnabled)
+    {
+        <tr>
+            <td>
+                @T("Admin.Orders.Address.ZipPostalCode"):
+            </td>
+            <td>
+                @Model.BillingAddress.ZipPostalCode
+            </td>
+        </tr>
+    }
+    @if (Model.BillingAddress.CountryEnabled)
+    {
+        <tr>
+            <td>
+                @T("Admin.Orders.Address.Country"):
+            </td>
+            <td>
+                @Model.BillingAddress.CountryName
+            </td>
+        </tr>
+    }*@
                 @if (!String.IsNullOrEmpty(Model.BillingAddress.FormattedCustomAddressAttributes))
                 {
                     <tr class="custom-attributes-view">
