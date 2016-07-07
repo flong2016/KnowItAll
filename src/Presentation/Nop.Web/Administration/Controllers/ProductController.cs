@@ -683,6 +683,7 @@ namespace Nop.Admin.Controllers
                 model.UnlimitedDownloads = true;
                 model.IsShipEnabled = true;
                 model.AllowCustomerReviews = true;
+                model.IsFreeShipping = true;//JXzfl
                 model.Published = true;
                 model.VisibleIndividually = true;
             }
